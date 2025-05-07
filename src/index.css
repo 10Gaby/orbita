@@ -1,0 +1,106 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root{
+  font-family: "Montserrat", sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  
+  color: white;
+}
+
+/*==================IMPORTACIÓN TIPOGRAFÍAS==================*/
+
+
+/* Realce */
+@font-face {
+  font-family: 'Realce';
+  src: url('./assets/realce-font/realce-black-v0006.otf') format('opentype');;
+  font-weight: 400;
+  font-style: normal;
+}
+
+/*============================================================*/
+
+.particles{
+  height: 100dvh;
+  position: absolute;
+}
+
+.brillo1{
+  --ancho: 300px;
+  height: var(--ancho);
+  width: var(--ancho);
+  border-radius: 383.17px;
+  background: rgba(220, 51, 252, 0.25);
+  filter: blur(100px);
+}
+
+/*CLASES GENERALES*/
+.relative{
+  position: relative;
+}
+
+.absolute{
+  position: absolute;
+}
+
+.fixed{
+  position: fixed !important;
+}
+
+.initial{
+  position: initial;
+}
+
+.hidden{
+  display: none !important;
+}
+
+
+h1 {
+  font-family: "Realce", sans-serif;
+  font-size: 10rem;
+  line-height: 1.1;
+  background: linear-gradient(180deg, #1F8BF7 0%, #DC33FC 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* :root {
+  font-family: "Montserrat", sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+  a:hover {
+    color: #747bff;
+  }
+} */
+
+
+/* body {
+  margin: 0;
+  display: flex;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+} */
