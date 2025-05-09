@@ -1,6 +1,8 @@
 import ParticlesBackground from "../componentes/Particles";
 import Carga from "../componentes/Carga";
 import { useState, useEffect } from "react";
+import Boton1 from "../componentes/Boton1";
+import Boton2 from "../componentes/Boton2";
 
 function Inicio() {
   const [carga, setCarga] = useState(true);
@@ -17,18 +19,25 @@ function Inicio() {
     <main className={`contenedor-general center`}>
     <Carga className={carga ? 'fixed' : 'hidden'} />
 
-    <ParticlesBackground />
     <div className="brillo1 absolute" style={{top:"-15%", left:"-10%", "--ancho": "400px"}}></div>
     <div className="brillo1 absolute" style={{bottom:"30%", left:"50%", backgroundColor:"rgba(31, 139, 247, 0.25"}}></div>
 
       <section className={`inicio ${carga ? 'hidden' : 'relative'}`}>
+      <img src="/Ilustraciones/Planeta-1.svg" alt="" className="absolute" style={{top:"35%", left:"10%", animation:"animacionRotarIzquierda 5s linear infinite"}}/>
+      <img src="/Ilustraciones/Planeta-2.svg" alt="" className="absolute" style={{top:"50%", right:"5%", animation:"animacionRotarDerecha 5s linear infinite"}}/>
+
         <div className="contenido-inicio relative">
 
           <div>
           <img src="/Pinguino.svg" alt="Pingüino" className="pinguino"/>
           <h1>ÓRBITA</h1>
           </div>
-          <p>Bienvenid@ a la aventura.</p>
+
+          <Boton1 href="/inicio">Iniciar Sesión</Boton1> <br/>
+          <Boton1 href="/inicio">Registrarse</Boton1> <br/>
+
+          <a href="" className="btn3">Continuar como invitado</a>
+
 
         </div>
       </section>

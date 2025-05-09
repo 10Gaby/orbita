@@ -6,7 +6,6 @@
 } */
 
 .contenedor-general{
-  background-color: #090110;
   position: relative;
   min-height: 100dvh;
 }
@@ -24,6 +23,10 @@
   align-items: center;
 }
 
+.inicio{
+  width: 100vw;
+  height: 100%;
+}
 
 .contenido-inicio{
   display: grid;
@@ -113,5 +116,31 @@
   }
   100%{
     width: 100%;
+  }
+}
+
+/*ANIMACIONES CSS*/
+
+@keyframes animacionRotarDerecha{
+  0%{
+    transform: rotate(0deg);
+  }
+  50%{
+    transform: rotate(180deg);
+  }
+  100%{
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes animacionRotarIzquierda{
+  0%{
+    transform: rotate(0deg);
+  }
+  50%{
+    transform: rotate(-180deg);
+  }
+  100%{
+    transform: rotate(-360deg);
   }
 }

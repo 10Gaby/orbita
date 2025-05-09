@@ -15,6 +15,10 @@ const ParticlesBackground = () => {
         id="tsparticles"
         init={particlesInit}
         options={{
+            background: {
+              color: {
+                value: "#090110", // Color de fondo (puede ser un color sólido o un degradado)
+              }},
             particles: {
               number: {
                 value: 25, // Cantidad de partículas

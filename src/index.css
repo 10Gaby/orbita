@@ -10,6 +10,13 @@
   font-weight: 400;
   
   color: white;
+
+  --fuente-títulos: 'Realce';
+  --color-primario: #1F8BF7;
+  --color-secundario: #DC33FC;
+  --color-fondo: #090110;
+
+  --color-texto: #ffffff;
 }
 
 /*==================IMPORTACIÓN TIPOGRAFÍAS==================*/
@@ -69,6 +76,10 @@ h1 {
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+
+.btn3{
+  color: white;
 }
 
 /* :root {

@@ -3,11 +3,13 @@ import './App.css'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Inicio from './pages/Inicio';
 import Carga from './componentes/Carga';
+import ParticlesBackground from './componentes/Particles';
 
 function App() {
 
   return (
       <div className="App">
+        <ParticlesBackground />
             <Router>
               {/* Usa solo un Router que envuelva las rutas */}
                 <Routes>
