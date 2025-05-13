@@ -5,6 +5,8 @@ import Inicio from './pages/Inicio';
 import Carga from './componentes/Carga';
 import ParticlesBackground from './componentes/Particles';
 
+import Login from './pages/Login';
+
 function App() {
 
   return (
@@ -15,6 +17,7 @@ function App() {
                 <Routes>
                   <Route path="/" element={<Inicio />} />
                   <Route path="/carga" element={<Carga />} />
+                  <Route path="/login" element={<Login />} />
                 </Routes>
 
 
