@@ -1,5 +1,5 @@
 import React from 'react';
-import '../css/Boton.css'; // Asegúrate de que la ruta sea correcta
+import '../css/boton.css'; // Asegúrate de que la ruta sea correcta
 
 const Boton1 = ({ href, children, className = '', ...props }) => {
     return (
