@@ -69,13 +69,26 @@
 
 
 h1 {
-  font-family: "Realce", sans-serif;
+  font-family: var(--fuente-títulos);
   font-size: 10rem;
   line-height: 1.1;
   background: linear-gradient(180deg, #1F8BF7 0%, #DC33FC 100%);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+
+h2, h3, h4, h5{
+  font-family: var(--fuente-títulos);
+}
+
+h3{
+  font-size: 2rem;
+}
+
+p{
+  line-height: 150%;
+  font-weight: normal;
 }
 
 .btn3{

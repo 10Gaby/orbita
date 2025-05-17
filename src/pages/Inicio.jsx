@@ -3,6 +3,7 @@ import Carga from "../componentes/Carga";
 import { useState, useEffect } from "react";
 import Boton1 from "../componentes/Boton1";
 import Boton2 from "../componentes/Boton2";
+import { Link } from "react-router-dom";
 
 function Inicio() {
   const [carga, setCarga] = useState(true);
@@ -36,7 +37,7 @@ function Inicio() {
           <Boton1 href="/inicio">Iniciar Sesión</Boton1> <br/>
           <Boton1 href="/inicio">Registrarse</Boton1> <br/>
 
-          <a href="" className="btn3">Continuar como invitado</a>
+          <Link to="/historia">Continuar como invitado</Link>
 
 
         </div>
