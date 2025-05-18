@@ -201,3 +201,51 @@
     align-content: center;
   }
 }
+
+/*==================PLANETAS==================*/
+
+.planetas{
+  display: grid;
+  align-items: center;
+  text-align: center;
+
+  & .pinguino{
+    z-index: 999;
+    top: 0;
+    left: 0;
+    animation: flotar 2.5s ease-in infinite;
+  }
+}
+
+.planeta{
+  height: 100vh;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 50% 50%;
+  overflow: hidden;
+  align-items: center;
+  align-content: center;
+  margin-bottom: 200px;
+  & img{
+    animation: animacionPlaneta 10s infinite linear;
+    width: 100%;
+  }
+
+  & a{
+    text-decoration: none;
+    color: white;
+  }
+}
+
+.bloqueado{
+  filter: grayscale(100%) brightness(1.5)  ;
+}
+
+@keyframes animacionPlaneta{
+  0%{
+    transform: rotate(0deg);
+  }
+  100%{
+    transform: rotate(360deg);
+  }
+}

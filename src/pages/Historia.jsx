@@ -10,25 +10,25 @@ function Historia() {
     {
       id: 1,
       content: (
-        <img src="/Ilustraciones/Cinemáticas/1.webp" alt="Cinemática 1" />
+        <img src="/Cinemáticas/1.webp" alt="Cinemática 1" />
       )
     },
     {
       id: 2,
       content: (
-        <img src="/Ilustraciones/Cinemáticas/2.webp" alt="Cinemática 2" style={{objectPosition:"bottom"}}/>
+        <img src="/Cinemáticas/2.webp" alt="Cinemática 2" style={{objectPosition:"bottom"}}/>
       )
     },
     {
       id: 3,
       content: (
-        <img src="/Ilustraciones/Cinemáticas/3.webp" alt="Cinemática 2"/>
+        <img src="/Cinemáticas/3.webp" alt="Cinemática 2"/>
       )
     },
     {
       id: 4,
       content: (
-        <img src="/Ilustraciones/Cinemáticas/4.webp" alt="Cinemática 2"/>
+        <img src="/Cinemáticas/4.webp" alt="Cinemática 2"/>
       )
     },
     {

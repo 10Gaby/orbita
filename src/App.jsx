@@ -14,7 +14,8 @@ function App() {
   return (
       <div className="App">
         <ParticlesBackground />
-            <Router>
+        <div className='contenedor-general'>
+              <Router>
               {/* Usa solo un Router que envuelva las rutas */}
                 <Routes>
                   <Route path="/" element={<Inicio />} />
@@ -23,11 +24,10 @@ function App() {
                   <Route path="/historia" element={<Historia />} />
                   <Route path="/planetas" element={<Planetas />} />
                 </Routes>
-
-
             </Router>
+        </div>
 
-          </div>
+      </div>
   )
 }
 
