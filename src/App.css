@@ -249,3 +249,88 @@
     transform: rotate(360deg);
   }
 }
+
+/*==================PLANETA CONTRACTUS==================*/
+
+.planeta-contractus{
+  & .portada{
+    margin: 100px 0px;
+  }
+
+  & h3, h4{
+    background: linear-gradient(180deg, #1F8BF7 0%, #DC33FC 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+}
+
+.img-planeta{
+  width: 100%;
+  animation: animacionPlaneta 10s infinite linear;
+}
+
+.tipos-contrato{
+  margin: 100px 0px;
+  & button > img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    transition: 0.5s ease;
+    border-radius: 30px;
+  }
+
+  & button.btn-contrato{
+    --rotate:0px;
+    --translateY: 0px;
+    position: relative;
+    transform: rotate(var(--rotate)) translateY(var(--translateY));
+
+    &:hover{
+      transform: scale(1.06) !important; 
+      transition: .3s;
+    }
+  }
+
+  & h4.desc{
+    position: absolute;
+    bottom: 8%;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    z-index: 10;
+    background: white;
+    background-clip: text;
+  }
+
+  & button.btn-contrato::after{
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(180deg, rgba(0, 0, 0, 0.00) 60.55%, #000 100%);
+    }
+}
+
+
+.periodo-prueba{
+  margin: 100px 0px;
+}
+
+.terminacion-contrato{
+  margin: 100px 0px;
+
+  & > div{
+    gap: 10%;
+  }
+}
+
+.excepciones{
+  border: 5px solid #1F8BF7;
+  border-radius: 10px;
+  margin: 100px 0px;
+  padding: 50px 20px;
+}

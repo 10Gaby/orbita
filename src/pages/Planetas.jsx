@@ -2,6 +2,7 @@ import { useEffect, useState, useRef } from "react";
 import { Link } from "react-router-dom";
 import useScore from "../store/useScore";
 import { motion, useMotionValueEvent, useScroll, useSpring, useTransform } from "motion/react";
+import Header from "../componentes/Header";
 
 function Planetas() {
     const score = useScore();
@@ -38,6 +39,7 @@ function Planetas() {
       <div className="brillo1 absolute" style={{top:"75%", left:"0%", backgroundColor:"rgba(31, 139, 247, 0.25", "--ancho": "500px"}}></div>
 
       <section className="planetas" ref={planetasRef}>
+        <Header enlace="/historia"/>
         <motion.img
         src="/Pinguino.svg"
         alt="Pingüino"
@@ -48,8 +50,8 @@ function Planetas() {
         }}
         />
         <div className={score.puntajeContractus > 0 ? "planeta" : "planeta bloqueado"}>
-          <Link to=""><h2>Planeta Contractus</h2></Link>
-          <Link to=""><img src="/Planetas/Planeta Contractus.svg" alt=""/></Link>
+          <Link to="/planeta-contractus"><h2>Planeta Contractus</h2></Link>
+          <Link to="/planeta-contractus"><img src="/Planetas/Planeta Contractus.svg" alt=""/></Link>
         </div>
 
         <div className={score.puntajeExplotarius > 0 ? "planeta" : "planeta bloqueado"}>

@@ -34,8 +34,8 @@ function Inicio() {
           <h1>ÓRBITA</h1>
           </div>
 
-          <Boton1 href="/inicio">Iniciar Sesión</Boton1> <br/>
-          <Boton1 href="/inicio">Registrarse</Boton1> <br/>
+          <Boton1 href="/historia">Iniciar Sesión</Boton1> <br/>
+          <Boton1 href="/historia">Registrarse</Boton1> <br/>
 
           <Link to="/historia">Continuar como invitado</Link>
 

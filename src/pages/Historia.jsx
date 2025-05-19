@@ -35,7 +35,7 @@ function Historia() {
       id: 5,
       content: (
         <div className="slide-content universo">
-          <h3>Unvierso</h3>
+          <h4>Unvierso</h4>
           <p>Pequeño ser creativo, tu talento merece respeto. Existen derechos, caminos justos y redes de apoyo. No estás solo.
             <br/>Te daré la oportunidad de transformar tu realidad mediante el conocimiento.
             <br/><br/>Recorre este universo de planetas que te enseñarán lo que necesitas saber para enfrentarte al mundo laboral sin morir en el intento.
