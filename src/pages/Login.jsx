@@ -1,24 +1,97 @@
-import '../css/login.css';
+import { useState, useEffect } from "react";
+import { auth } from '../api/firebase';
+import { signInWithEmailAndPassword, onAuthStateChanged} from "firebase/auth";
+import { useNavigate } from "react-router-dom";
+import Boton2 from "../componentes/Boton2";
+import '../css/Login.css';
 
-function Login(){
-    return (
-        <div className='contenedor-general'>
-            <h2>Inicia Sesión</h2>
-            <p>Por favor ingresa tus credenciales para iniciar sesión.</p>
-            <form className='sf-1'>
-                <div>
-                    <label htmlFor="email">Email:</label>
-                    <input type="email" id="email" name="email" required />
-                </div>
-                <div>
-                    <label htmlFor="clave">Contraseña:</label>
-                    <input type="password" id="clave" name="clave" required />
-                </div>
-                <button type="submit">Iniciar Sesión</button>
-                <button type="button" onClick={() => alert('Forgot Password?')}>¿Olvidaste tu contrasña?</button>
-            </form>
+function Login() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+      const unsubscribe = onAuthStateChanged(auth, (user) => {
+        if (user) {
+          navigate('/historia');
+        }
+      });
+  
+      // Limpiar el listener cuando el componente se desmonte
+      return () => unsubscribe();
+    }, [navigate]);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setError("");
+    setLoading(true);
+    
+    try {
+      await signInWithEmailAndPassword(auth, email, password);
+      navigate("/historia");
+    } catch (error) {
+      let errorMessage = "Ocurrió un error durante el inicio de sesión.";
+      
+      switch(error.code) {
+        case "auth/invalid-email":
+          errorMessage = "El correo electrónico no es válido.";
+          break;
+        case "auth/user-disabled":
+          errorMessage = "Esta cuenta ha sido deshabilitada.";
+          break;
+        case "auth/user-not-found":
+          errorMessage = "No existe una cuenta con este correo electrónico.";
+          break;
+        case "auth/wrong-password":
+          errorMessage = "Contraseña incorrecta.";
+          break;
+        default:
+          errorMessage = error.message;
+      }
+      
+      setError(errorMessage);
+      setLoading(false);
+    }
+  };
+
+  return (
+    <section className="registro relative">
+
+      {error && <p className="error-message">{error}</p>}
+      <form onSubmit={handleSubmit}>
+        <h3>Inicia Sesión</h3><br/>
+        <div className="form-group">
+          <label>Email</label>
+          <input
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
         </div>
-    );
+        <div className="form-group">
+          <label>Contraseña</label>
+          <input
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
+        </div>
+        <br/>
+        {/* <button type="submit" disabled={loading} className="btn1">
+          {loading ? "Iniciando sesión..." : "Iniciar sesión"}
+        </button> */}
+
+        <Boton2 type="submit">Iniciar Sesión</Boton2>
+
+        <br/>
+        <a href="/registro" className="text-center">¿Aún no tienes una cuenta? Regístrate</a>
+      </form>
+    </section>
+  );
 }
 
 export default Login;

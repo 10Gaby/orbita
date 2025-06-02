@@ -1,0 +1,161 @@
+
+.game-container {
+background: linear-gradient(229deg, #1F8BF7 -7.25%, #DC33FC 100%), #D9D9D9;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  padding-top: 50px !important;
+  padding-bottom: 50px !important;
+  width: 100%;
+  text-align: center;
+  min-height: 100dvh;
+}
+
+h1 {
+  color: #2c3e50;
+  margin-bottom: 20px;
+}
+
+.battle-screen {
+  position: relative;
+  min-height: 400px;
+  display: grid;
+  grid-template-columns: 70% 30%;
+}
+
+.aliens-container {
+  display: flex;
+  justify-content: space-around;
+}
+
+.alien {
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.alien-body {
+  font-size: 40px;
+  transition: all 0.3s ease;
+}
+
+.alien.hit .alien-body {
+  transform: translateY(-20px);
+  opacity: 0;
+}
+
+.alien-dead {
+  font-size: 40px;
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.alien.dead .alien-dead {
+  opacity: 1;
+}
+
+.player {
+  position: relative;
+  font-size: 40px;
+  margin-top: 30px;
+  transition: all 0.3s ease;
+}
+
+.player.hit {
+  animation: shake 0.5s;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-10px); }
+  75% { transform: translateX(10px); }
+}
+
+.laser {
+  position: absolute;
+  font-size: 20px;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: shoot 0.5s forwards;
+}
+
+@keyframes shoot {
+  0% { transform: translateX(-50%) translateY(0); opacity: 1; }
+  100% { transform: translateX(-50%) translateY(-150px); opacity: 0; }
+}
+
+.question-container {
+  margin-top: 30px;
+}
+
+.score {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.options {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.options button {
+  padding: 10px 15px;
+  border: 4px solid white;
+  border-radius: 5px;
+  background-color: transparent;
+  color: white;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.options button:hover {
+  background-color: white;
+  transform: scale(1.02);
+  color: #2c3e50;
+}
+
+.options button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.options button.correct {
+  background-color: #2ecc71;
+}
+
+.options button.incorrect {
+  background-color: #e74c3c;
+}
+
+.feedback {
+  margin-top: 20px;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: var(--color-primario);
+}
+
+.next-button, .reset-button {
+  margin-top: 15px;
+  padding: 10px 20px;
+  background-color: #2c3e50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.next-button:hover, .reset-button:hover {
+  background-color: #1a252f;
+}
+
+.game-over {
+  padding: 20px;
+}
+
+.game-over h2 {
+  color: #e74c3c;
+}

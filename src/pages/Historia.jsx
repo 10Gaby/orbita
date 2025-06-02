@@ -2,6 +2,7 @@ import { useState } from "react";
 import { FaArrowCircleLeft, FaArrowCircleRight } from "react-icons/fa";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom"; // o usa un <a> si no estás usando React Router
+import Header from "../componentes/Header";
 
 function Historia() {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -61,6 +62,7 @@ function Historia() {
 
   return (
     <section className="contenedor-general historia">
+      <Header enlace="/planetas" style={{backgroundColor: "#f5f5f5", marginTop:"0px", background:"linear-gradient(180deg, rgba(0, 0, 0, 0.70) 0%, rgba(0, 0, 0, 0.00) 100%)"}}/>
       <div className="flechas">
         {isFirstSlide ? (
             <button onClick={prevSlide} className="flecha hidden">

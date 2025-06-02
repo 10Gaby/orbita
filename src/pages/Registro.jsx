@@ -77,9 +77,10 @@ function Registro() {
     <section className="registro">
       <a href="/"><img src="/Iconos/Flecha_De_Color-7.webp" alt="" className="absolute flecha" style={{transform:"scale(-1)", top:"0px", left:"10px"}}/></a>
       <img src="/Registro.png" alt="" />
-      <h1>REGíSTRaTE</h1><br/><br/>
+      
       {error && <p className="error-message">{error}</p>}
       <form onSubmit={handleSubmit}>
+        <h3>Regístrate</h3><br/>
         <div className="form-group">
           <label>Nombre de usuario</label>
           <input
@@ -112,7 +113,7 @@ function Registro() {
         {/* <button type="submit" disabled={loading} className="btn1">
           {loading ? "Registrando..." : "Registrarse"}
         </button> */}
-        <Boton2 href="/historia" type="submit">Registrarse</Boton2>
+        <Boton2 type="submit">Registrarse</Boton2>
 
         <br/>
         <a href="/login" className="text-center">¿Ya tienes una cuenta? Inicia Sesión</a>

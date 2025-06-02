@@ -5,6 +5,9 @@ import Inicio from './pages/Inicio';
 import Carga from './componentes/Carga';
 import ParticlesBackground from './componentes/Particles';
 import ClickSpark from './componentes/ClickSpark';
+import PreguntasContractus from './componentes/PreguntasContractus';
+
+import Menu from './pages/Menu';
 
 import Registro from './pages/Registro';
 import Login from './pages/Login';
@@ -33,9 +36,14 @@ function App() {
                   <Route path="/carga" element={<Carga />} />
                   <Route path="/login" element={<Login />} />
                   <Route path="/registro" element={<Registro />} />
+
+                  <Route path="/menu" element={<Menu />} />
+
+
                   <Route path="/historia" element={<Historia />} />
                   <Route path="/planetas" element={<Planetas />} />
                   <Route path="/planeta-contractus" element={<PlanetaContractus />} />
+                  <Route path="/preguntas-contractus" element={<PreguntasContractus />} />
                 </Routes>
             </Router>
         </div>

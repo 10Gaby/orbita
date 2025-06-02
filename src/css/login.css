@@ -1,0 +1,84 @@
+.registro {
+    display: flex;
+    flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+/* Tarjeta */
+form {
+  background: linear-gradient(135deg, rgba(160, 41, 255, 0.15), rgba(0, 140, 255, 0.1));
+  border: 2px solid rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  padding: 2.5rem;
+  border-radius: 20px;
+  box-shadow: 0 0 30px rgba(144, 0, 255, 0.2);
+  width: 40vw;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  perspective: 1000px;
+}
+
+/* Efecto de inclinación al mover el mouse */
+form:hover {
+  cursor: pointer;
+}
+
+form:has(input:hover),
+form:hover {
+  transform: rotateX(7deg) rotateY(7deg);
+  box-shadow: 0 0 40px rgba(255, 0, 255, 0.2), 0 0 60px rgba(0, 204, 255, 0.3);
+}
+
+
+/* Campos */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1.5rem;
+}
+
+label {
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+  color: #ddd;
+}
+
+input {
+  padding: 0.8rem;
+  border: none;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.05);
+  color: #fff;
+  font-size: 1rem;
+  outline: none;
+  transition: background 0.2s ease;
+}
+
+input:focus {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* Error */
+.error-message {
+  background-color: #ff4f4f;
+  padding: 0.8rem;
+  border-radius: 10px;
+  text-align: center;
+  margin-bottom: 1rem;
+  font-weight: bold;
+}
+
+/* Enlace */
+a {
+  display: block;
+  text-align: center;
+  margin-top: 1rem;
+  color: #9ad9ff;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+a:hover {
+  color: #fff;
+}
