@@ -1,10 +1,11 @@
 import useScore from "../store/useScore";
 import { Link } from "react-router-dom";
+import useScoreSync from "../store/useScoreSync";
 
 function Header({enlace, textoEnlace = "Regresar", style = {}}) {
     const score = useScore();
-    const { Contractus = 0, Explotarius = 0, Propietas = 0 } = score.puntaje || {};
-    const puntajeTotal = Contractus + Explotarius + Propietas;
+    useScoreSync();
+    const puntajeTotal = score.puntaje.Contractus + score.puntaje.Explotarius + score.puntaje.Propietas;
 
     return(
         <header className="padding" style={style}>
@@ -13,6 +14,7 @@ function Header({enlace, textoEnlace = "Regresar", style = {}}) {
                 <div className="pt">{puntajeTotal}</div> <h4>Puntaje</h4>
                 
                 <Link to="/menu"><img src="/Iconos/Menú.svg" alt="" /></Link>
+                {/* <button onClick={() => score.reset('Contractus')} className="btn1">Resetear</button> */}
             </div>
         </header>
     )

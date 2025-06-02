@@ -49,19 +49,19 @@ function Planetas() {
           left: left,
         }}
         />
-        <div className={score.puntajeContractus > 0 ? "planeta" : "planeta bloqueado"}>
+        <div className={score.puntaje.Contractus > 0 ? "planeta" : "planeta bloqueado"}>
           <Link to="/planeta-contractus"><h2>Planeta Contractus</h2></Link>
           <Link to="/planeta-contractus"><img src="/Planetas/Planeta Contractus.svg" alt=""/></Link>
         </div>
 
-        <div className={score.puntajeExplotarius > 0 ? "planeta" : "planeta bloqueado"}>
-          <Link to=""><img src="/Planetas/Planeta Explotarius.svg" alt=""/></Link>
-          <Link to=""><h2>Planeta Explotarius</h2></Link>
+        <div className={score.puntaje.Explotarius > 0 ? "planeta" : "planeta bloqueado"}>
+          <Link to="/planeta-explotarius"><img src="/Planetas/Planeta Explotarius.svg" alt=""/></Link>
+          <Link to="/planeta-explotarius"><h2>Planeta Explotarius</h2></Link>
         </div>
 
-        <div className={score.puntajePropietas > 0 ? "planeta" : "planeta bloqueado"}>
-          <Link to=""><h2>Planeta Propietas</h2></Link>
-          <Link to=""><img src="/Planetas/Planeta Propietas.svg" alt=""/></Link>
+        <div className={score.puntaje.Propietas > 0 ? "planeta" : "planeta bloqueado"}>
+          <Link to="/planeta-propietas"><h2>Planeta Propietas</h2></Link>
+          <Link to="/planeta-propietas"><img src="/Planetas/Planeta Propietas.svg" alt=""/></Link>
         </div>
       </section>
 

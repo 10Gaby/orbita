@@ -35,7 +35,7 @@ const PopUp = ({ isOpen, onClose, title, image, children }) => {
         )}
         
         <div className="popup-content">
-          {title && <h4 className="popup-title">{title}</h4>}
+          {title && <h4 className="popup-title color-gradient">{title}</h4>}
           {children}
         </div>
       </div>

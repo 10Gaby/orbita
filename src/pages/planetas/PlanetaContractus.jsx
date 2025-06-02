@@ -3,6 +3,8 @@ import video from "../../assets/Aterrizaje Contractus.mp4";
 import PopUp from "../../componentes/PopUp";
 import Header from "../../componentes/Header";
 
+import PreguntasContractus from "../../componentes/PreguntasContractus";
+
 function PlanetaContractus() {
     const [carga, setCarga] = useState(true);
    // Efecto para cambiar el estado después de 2.5 segundos
@@ -35,7 +37,7 @@ function PlanetaContractus() {
         </section>
 
         <section className={carga ? 'hidden' : 'initial planeta-contractus center'}>
-            <Header enlace="/planetas"/>
+            <Header enlace="/planetas" textoEnlace="Ver Planetas"/>
             <div className="portada center">
                 <h2>Planeta Contractus</h2>
                 <img src="/Planetas/Planeta Contractus.svg" alt="" className="img-planeta" />
@@ -46,7 +48,7 @@ function PlanetaContractus() {
                 Trabajo existen dos formas: verbal y escrita, y los hay de varios tipos según su
                 duración, como a término fijo, indefinido, transitorio y de obra o labor.
                 </p>
-                <h3 className="text-center">Formas de contratos</h3>
+                <h3 className="text-center color-gradient">Formas de contratos</h3>
                 <div className="grid-2 text-center">
                     <div className="center">
                         <img src="/Iconos/Contrato escrito.svg" alt="Contrato Escrito" />
@@ -61,7 +63,7 @@ function PlanetaContractus() {
                 </div>
 
                 <div className="tipos-contrato">
-                    <h3 className="text-center">Tipos de contrato</h3>
+                    <h3 className="text-center color-gradient">Tipos de contrato</h3>
                     <br/><br/>
 
                     <div className="grid-4" style={{gap:"5%"}}>
@@ -93,13 +95,12 @@ function PlanetaContractus() {
                         title="Contrato a término fijo"
                         image={"/Ilustraciones/Contrato-fijo.webp"}
                     >
-                        <p>Es un acuerdo que tiene una <b>fecha de finalización ya establecida</b> desde el inicio.<br/>
-                                <ul>
-                                    <li>Debe hacerse por escrito.</li>
-                                    <li>Puede durar hasta 3 años, pero se puede renovar las veces que sea necesario.</li>
-                                    <li>Puede renovarse automáticamente si se cumplen ciertas condiciones legales.</li>
-                                </ul>
-                        </p>
+                        <p>Es un acuerdo que tiene una <b>fecha de finalización ya establecida</b> desde el inicio.<br/></p>
+                        <ul>
+                            <li>Debe hacerse por escrito.</li>
+                            <li>Puede durar hasta 3 años, pero se puede renovar las veces que sea necesario.</li>
+                            <li>Puede renovarse automáticamente si se cumplen ciertas condiciones legales.</li>
+                        </ul>
                     </PopUp>
 
                     <PopUp
@@ -108,12 +109,11 @@ function PlanetaContractus() {
                         title="Contrato a término indefinido"
                         image={"/Ilustraciones/Contrato-indefinido.webp"}
                     >
-                        <p>Este acuerdo no tiene una fecha de finalización establecida.
+                        <p>Este acuerdo no tiene una fecha de finalización establecida.</p>
                             <ul>
                                 <li>No se renueva, porque dura hasta que <b>una de las partes decida terminarlo.</b></li>
                                 <li>Puede continuar por <b>tiempo indefinido,</b> siempre que ambas partes estén de acuerdo.</li>
                             </ul>
-                        </p>
                     </PopUp>
 
                     <PopUp
@@ -123,12 +123,12 @@ function PlanetaContractus() {
                         image={"/Ilustraciones/Contrato-ocasional.webp"}
                     >
                         <p>Este es un contrato a <b>término fijo,</b> pero se usa para cubrir una <b>necesidad temporal o puntual</b> en la empresa.
-                            Por ejemplo:
+                            Por ejemplo:</p>
                             <ul>
                                 <li>Reemplazar a alguien por un período de tiempo.</li>
                                 <li>Apoyar tareas específicas.</li>
                             </ul>
-                            Es ideal para trabajos <b>transitorios o accidentales,</b> que tienen una duración limitada.</p>
+                            <p>Es ideal para trabajos <b>transitorios o accidentales,</b> que tienen una duración limitada.</p>
                     </PopUp>
 
                     <PopUp
@@ -137,39 +137,40 @@ function PlanetaContractus() {
                         title="Contrato de obra o labor"
                         image={"/Ilustraciones/Contrato-obra-labor.webp"}
                     >
-                        <p>Este contrato <b>dura hasta que se termine una tarea específica.</b>
+                        <p>Este contrato <b>dura hasta que se termine una tarea específica.</b></p>
                             <ul>
                                 <li>No tiene una fecha exacta de finalización, porque depende del tiempo que tome completar la obra o labor contratada.</li>
                                 <li>Por ejemplo, puede ser hasta que se termine una construcción o un proyecto puntual.</li>
                             </ul>
-                        </p>
                     </PopUp>
                 </div>
 
                 
                 <div className="grid-2 center periodo-prueba">
-                    <h3>Período de prueba</h3>
-                    <p>
-                        Es la etapa inicial del contrato donde el trabajador o el empleador pueden terminar la relación laboral sin pagar indemnización.
-                        <ul>
-                            <li>Debe acordarse por escrito.</li>
-                            <li>Dura máximo 2 meses.</li>
-                            <li>Si el contrato dura menos de un año, el período de prueba no puede pasar del 20% del tiempo total.</li>
-                            <li>El trabajador sigue teniendo todos los derechos laborales: salario, prestaciones, afiliación a la seguridad social, pago de horas extra, etc, a excepción de la indemnización si es despedido en ese tiempo.</li>
-                        </ul>
-                    </p>
+                    <h3 className="color-gradient">Período de prueba</h3>
+                    <div>
+                        <p>
+                            Es la etapa inicial del contrato donde el trabajador o el empleador pueden terminar la relación laboral sin pagar indemnización.
+                        </p>
+                            <ul>
+                                <li>Debe acordarse por escrito.</li>
+                                <li>Dura máximo 2 meses.</li>
+                                <li>Si el contrato dura menos de un año, el período de prueba no puede pasar del 20% del tiempo total.</li>
+                                <li>El trabajador sigue teniendo todos los derechos laborales: salario, prestaciones, afiliación a la seguridad social, pago de horas extra, etc, a excepción de la indemnización si es despedido en ese tiempo.</li>
+                            </ul>
+                    </div>
                 </div>
 
 
                 <div className="terminacion-contrato">
-                    <h3 className="text-center">Terminación del contrato de trabajo</h3>
+                    <h3 className="text-center color-gradient">Terminación del contrato de trabajo</h3>
                     <p className="text-center">Un contrato de trabajo puede terminarse por decisión de una o ambas partes, pero hay reglas según el motivo:</p>
                     <br/><br/>
 
                     <div className="grid-2 center">
                         <div className="center">
                             <img src="/Iconos/Check.svg" alt="" />
-                            <h4>Con justa causa</h4>
+                            <h4 className="color-gradient">Con justa causa</h4>
                             <p>
                                 Ocurre cuando una de las partes incumple sus deberes o comete una falta grave.
                                 En este caso:
@@ -181,7 +182,7 @@ function PlanetaContractus() {
 
                         <div className="center">
                             <img src="/Iconos/Error.svg" alt="" />
-                            <h4>Sin justa causa</h4>
+                            <h4 className="color-gradient">Sin justa causa</h4>
                             <p>
                                 Cualquiera puede terminar el contrato sin necesidad de explicar por qué, pero:
                                 El empleador debe pagar una indemnización, según el artículo 64 del mismo código.
@@ -194,10 +195,12 @@ function PlanetaContractus() {
                 <div className="excepciones grid-2 center">
                     <h3>Excepciones</h3>
                     <p>Si el trabajador tiene estabilidad laboral reforzada (por ejemplo, por embarazo o enfermedad), no puede ser despedido sin autorización de un juez, aunque se pague indemnización.</p>
-                </div>
-
+                </div>         
 
             </section>
+
+            <PreguntasContractus />
+
         </section>
     </main>
   );

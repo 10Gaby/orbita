@@ -1,5 +1,8 @@
 import { useState, useEffect } from 'react';
-import '../css/preguntas.css'; // Asegúrate de tener este archivo CSS para estilos
+import useScore from '../store/useScore';
+import { Link } from 'react-router-dom';
+import Boton2 from './Boton2';
+import '../css/preguntas.css';
 
 const questions = [
   {
@@ -12,28 +15,32 @@ const questions = [
     correctAnswer: 0
   },
   {
-    question: "¿Cuántas horas constituyen la jornada laboral máxima en México?",
+    question: "Durante el periodo de prueba, el trabajador ha estado trabajando sin sueldo, su empleador dice que legalmente no tiene porque pagarle en el periodo de prueba. Su afirmación es:",
     options: [
-      "40 horas por semana",
-      "48 horas por semana",
-      "45 horas por semana"
+      "Correcta, en el periodo de prueba el trabajador no puede reclamar los derechos laborales.",
+      "Incorrecta, en el periodo de prueba el trabajador sigue teniendo todos sus derechos laborales, a excepción de la indemnización."
     ],
     correctAnswer: 1
   },
   {
-    question: "¿Qué derecho tiene un trabajador después de un año de servicio?",
+    question: "El empleador quiere despedir a una trabajadora embarazada. ¿Puede hacerlo si le paga indemnización?",
     options: [
-      "15 días de vacaciones pagadas",
-      "6 días de vacaciones pagadas",
-      "20 días de vacaciones pagadas"
+      "Sí, si paga la indemnización correspondiente",
+      "No, necesita permiso de un juez",
+      "Sí, si ya terminó el período de prueba"
     ],
-    correctAnswer: 0
+    correctAnswer: 1
   }
 ];
 
 const PreguntasContractus = () => {
+  const score = useScore();
+  // 🎯 Conectar con Zustand store
+  // const { puntajes, sumar, restar } = useScore();
+  // const contractusScore = score.puntajes.Contractus;
+
+  // Estados locales del juego
   const [currentQuestion, setCurrentQuestion] = useState(0);
-  const [score, setScore] = useState(100);
   const [aliens, setAliens] = useState([true, true, true]);
   const [gameOver, setGameOver] = useState(false);
   const [selectedAnswer, setSelectedAnswer] = useState(null);
@@ -41,6 +48,34 @@ const PreguntasContractus = () => {
   const [shooting, setShooting] = useState(false);
   const [hitAlien, setHitAlien] = useState(null);
   const [playerHit, setPlayerHit] = useState(false);
+  const [gameStarted, setGameStarted] = useState(false);
+  
+  useEffect(() => {
+  const contractusScore = score.puntaje.Contractus;
+
+  if (contractusScore !== 0 && !gameStarted) {
+    setGameStarted(true);
+    setGameOver(true);
+  }
+}, []);
+
+
+  // 🚀 Inicializar puntaje al comenzar el juego
+  const startGame = () => {
+    // Resetear el puntaje de Contractus a 100 al iniciar
+    const currentScore = score.puntaje.Contractus;
+    if (score.puntaje.Contractus !== 0) return;
+    if (currentScore !== 0) {
+      // Si no es 100, ajustarlo
+      const difference = currentScore - currentScore;
+      if (difference > 0) {
+        score.sumar('Contractus', difference);
+      } else {
+        score.restar('Contractus', Math.abs(difference));
+      }
+    }
+    setGameStarted(true);
+  };
 
   const handleAnswer = (index) => {
     if (selectedAnswer !== null) return;
@@ -50,10 +85,14 @@ const PreguntasContractus = () => {
     setIsCorrect(correct);
     
     if (correct) {
-      // Find first alive alien to shoot
+      // ✅ Respuesta correcta: eliminar alien
       const alienIndex = aliens.findIndex(alien => alien);
       setHitAlien(alienIndex);
       setShooting(true);
+      
+      // Sumar puntos por respuesta correcta
+      score.sumar('Contractus', 10);
+      
       setTimeout(() => {
         const newAliens = [...aliens];
         newAliens[alienIndex] = false;
@@ -61,8 +100,9 @@ const PreguntasContractus = () => {
         setShooting(false);
       }, 1000);
     } else {
+      // ❌ Respuesta incorrecta: perder puntos
       setPlayerHit(true);
-      setScore(prev => Math.max(0, prev - 30));
+      score.restar('Contractus', 20); // Restar 30 puntos
       setTimeout(() => setPlayerHit(false), 1000);
     }
   };
@@ -71,6 +111,7 @@ const PreguntasContractus = () => {
     setSelectedAnswer(null);
     setIsCorrect(null);
     setHitAlien(null);
+    
     if (currentQuestion < questions.length - 1) {
       setCurrentQuestion(prev => prev + 1);
     } else {
@@ -80,7 +121,6 @@ const PreguntasContractus = () => {
 
   const resetGame = () => {
     setCurrentQuestion(0);
-    setScore(100);
     setAliens([true, true, true]);
     setGameOver(false);
     setSelectedAnswer(null);
@@ -88,81 +128,122 @@ const PreguntasContractus = () => {
     setShooting(false);
     setHitAlien(null);
     setPlayerHit(false);
+    setGameStarted(false);
+
+    score.reset('Contractus');
+
   };
 
-  // Check if all aliens are defeated
+  // Verificar si todos los aliens fueron derrotados
   useEffect(() => {
-    if (aliens.every(alien => !alien)) {
+    if (gameStarted && aliens.every(alien => !alien)) {
       setTimeout(() => setGameOver(true), 1000);
     }
-  }, [aliens]);
+  }, [aliens, gameStarted]);
+
+  // 🎮 Pantalla de inicio
+  if (!gameStarted) {
+    return (
+      <section className="game-container padding">
+        <div className="game-start">
+          <h2>Batalla por el Contrato Justo</h2>
+          <p>Puntaje actual de Contractus: <strong>{score.puntaje.Contractus}</strong></p>
+          <p>Al iniciar el juego, tu puntaje de este planeta se establecerá en 0 puntos.</p>
+          <p>Responde correctamente para eliminar aliens y ganar puntos.</p>
+          <p>Las respuestas incorrectas te harán perder 20 puntos.</p>
+          <button onClick={startGame} className="start-button">
+            Iniciar Juego
+          </button>
+        </div>
+      </section>
+    );
+  }
 
   return (
     <section className="game-container padding">
-      
       {!gameOver ? (
         <div className="battle-screen">
-        
-
-            <div>
-                <h3>Batalla por el Contrato Justo</h3>
+          <div>
+            <h3>Batalla por el Contrato Justo</h3>
             
-                <div className="question-container">
-                    <div className="score">Puntos: {score}</div>
-                    <p>{questions[currentQuestion].question}</p>
-                    <div className="options">
-                    {questions[currentQuestion].options.map((option, index) => (
-                        <button
-                        key={index}
-                        onClick={() => handleAnswer(index)}
-                        className={`
-                            ${selectedAnswer === index ? (isCorrect ? 'correct' : 'incorrect') : ''}
-                            ${selectedAnswer !== null && index === questions[currentQuestion].correctAnswer ? 'correct' : ''}
-                        `}
-                        disabled={selectedAnswer !== null}
-                        >
-                        {option}
-                        </button>
-                    ))}
-                    </div>
-                    
-                    {selectedAnswer !== null && (
-                    <div className="feedback">
-                        <p>{isCorrect ? '¡Correcto! Has eliminado un alien.' : 'Incorrecto. Has perdido puntos.'}</p>
-                        <button onClick={nextQuestion} className="next-button">
-                        {currentQuestion < questions.length - 1 ? 'Siguiente Pregunta' : 'Ver Resultados'}
-                        </button>
-                    </div>
-                    )}
+            <div className="question-container">
+              <div className="score">
+                Puntos Contractus: <strong>{score.puntaje.Contractus}</strong>
+              </div>
+              <div className="question-number">
+                Pregunta {currentQuestion + 1} de {questions.length}
+              </div>
+              <p>{questions[currentQuestion].question}</p>
+              
+              <div className="options">
+                {questions[currentQuestion].options.map((option, index) => (
+                  <button
+                    key={index}
+                    onClick={() => handleAnswer(index)}
+                    className={`
+                      ${selectedAnswer === index ? (isCorrect ? 'correct' : 'incorrect') : ''}
+                      ${selectedAnswer !== null && index === questions[currentQuestion].correctAnswer ? 'correct' : ''}
+                    `}
+                    disabled={selectedAnswer !== null}
+                  >
+                    {option}
+                  </button>
+                ))}
+              </div>
+              
+              {selectedAnswer !== null && (
+                <div className="feedback">
+                  <p>
+                    {isCorrect 
+                      ? '¡Correcto! El jugador lanza un rayo legal ⚡ y gana +10 puntos. Has eliminado un alien.' 
+                      : 'Incorrecto. El enemigo contraataca con confusión contractual 😵 y pierdes -20 puntos.'
+                    }
+                  </p>
+                  <button onClick={nextQuestion} className="next-button">
+                    {currentQuestion < questions.length - 1 ? 'Siguiente Pregunta' : 'Ver Resultados'}
+                  </button>
                 </div>
+              )}
+            </div>
           </div>
 
           <div>
-                    <div className="aliens-container">
-                        {aliens.map((alive, index) => (
-                        <div 
-                            key={index} 
-                            className={`alien ${alive ? '' : 'dead'} ${hitAlien === index ? 'hit' : ''}`}
-                        >
-                            {alive && <div className="alien-body">👽</div>}
-                            {!alive && <div className="alien-dead">💀</div>}
-                        </div>
-                        ))}
-                    </div>
-                    
-                    <div className={`player ${playerHit ? 'hit' : ''}`}>
-                        <div className="player-body">🧑‍💼</div>
-                        {shooting && <div className="laser">🔫</div>}
-                    </div>
+            <div className="aliens-container">
+              {aliens.map((alive, index) => (
+                <div 
+                  key={index} 
+                  className={`alien ${alive ? '' : 'dead'} ${hitAlien === index ? 'hit' : ''}`}
+                >
+                  {alive && <div className="alien-body">👽</div>}
+                  {!alive && <div className="alien-dead">💀</div>}
+                </div>
+              ))}
+            </div>
+            
+            <div className={`player ${playerHit ? 'hit' : ''}`}>
+              <div className="player-body">🧑‍💼</div>
+              {shooting && <div className="laser">🔫</div>}
+            </div>
           </div>
-
         </div>
       ) : (
         <div className="game-over">
-          <h2>Juego Terminado</h2>
-          <p>Tu puntuación final: {score}</p>
-          <p>{aliens.every(alien => !alien) ? '¡Felicidades! Has derrotado a todos los aliens.' : 'Inténtalo de nuevo para mejorar.'}</p>
-          <button onClick={resetGame} className="reset-button">Jugar de Nuevo</button>
+          <h3>Juego Terminado</h3>
+          <p>Tu puntuación final: <strong>{score.puntaje.Contractus}</strong></p>
+          <p>
+            {aliens.every(alien => !alien) 
+              ? '¡Felicidades! Has derrotado a todos los aliens.' 
+              : 'Inténtalo de nuevo para mejorar.'
+            }
+          </p>
+          <div className="game-over-actions">
+            <button onClick={resetGame} className="reset-button">
+              Jugar de Nuevo
+            </button>
+
+            <Link to="/planeta-explotarius" className='next-button-2'>Viajar al siguiente planeta</Link>
+            
+          </div>
         </div>
       )}
     </section>

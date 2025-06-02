@@ -1,8 +1,12 @@
 import '../css/boton2.css';
+import { useNavigate } from 'react-router-dom';
 
 function Boton2({ href, type, children }) {
+
+  const navigate = useNavigate();
+  
   return (
-        <button className="uiverse" type={type || "button"} >
+        <button className="uiverse" type={type || "button"} navigate={href}>
         <div className="wrapper">
             <span>{children || 'Clic Aquí'}</span>
             <div className="circle circle-12"></div>

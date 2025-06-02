@@ -5,7 +5,6 @@ import Inicio from './pages/Inicio';
 import Carga from './componentes/Carga';
 import ParticlesBackground from './componentes/Particles';
 import ClickSpark from './componentes/ClickSpark';
-import PreguntasContractus from './componentes/PreguntasContractus';
 
 import Menu from './pages/Menu';
 
@@ -15,6 +14,8 @@ import Historia from './pages/Historia';
 import Planetas from './pages/Planetas';
 
 import PlanetaContractus from './pages/planetas/PlanetaContractus';
+import PlanetaExplotarius from './pages/planetas/PlanetaExplotarius';
+import PlanetaPropietas from './pages/planetas/PlanetaPropietas';
 
 function App() {
 
@@ -43,7 +44,8 @@ function App() {
                   <Route path="/historia" element={<Historia />} />
                   <Route path="/planetas" element={<Planetas />} />
                   <Route path="/planeta-contractus" element={<PlanetaContractus />} />
-                  <Route path="/preguntas-contractus" element={<PreguntasContractus />} />
+                  <Route path="/planeta-explotarius" element={<PlanetaExplotarius />} />
+                  <Route path="/planeta-propietas" element={<PlanetaPropietas />} />
                 </Routes>
             </Router>
         </div>

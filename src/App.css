@@ -256,13 +256,6 @@
   & .portada{
     margin: 100px 0px;
   }
-
-  & h3, h4{
-    background: linear-gradient(180deg, #1F8BF7 0%, #DC33FC 100%);
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
 }
 
 .img-planeta{
@@ -300,8 +293,7 @@
     width: 100%;
     text-align: center;
     z-index: 10;
-    background: white;
-    background-clip: text;
+    color: white;
   }
 
   & button.btn-contrato::after{
@@ -334,3 +326,16 @@
   margin: 100px 0px;
   padding: 50px 20px;
 }
+
+/*==================PLANETA EXPLOTARIUS==================*/
+
+.p-explotarius{
+  overflow-x: hidden;
+}
+
+.vertical-timeline-element-content{
+  background: transparent !important;
+}
+
+/*==================PLANETA PROPIETAS==================*/
+

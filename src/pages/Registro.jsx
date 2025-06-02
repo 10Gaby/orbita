@@ -45,11 +45,17 @@ function Registro() {
         email: email,
         username: username,
         createdAt: serverTimestamp(),
-        uid: user.uid
+        uid: user.uid,
+        puntaje: {
+          Contractus: 0,
+          Explotarius: 0,
+          Propietas: 0
+        }
       });
       
       // Redirigir después del registro exitoso
       navigate("/historia");
+      await iniciarSincronizacion();
     } catch (error) {
       // Manejo de errores
       let errorMessage = "Ocurrió un error durante el registro.";

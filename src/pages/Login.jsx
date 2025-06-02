@@ -30,6 +30,7 @@ function Login() {
     
     try {
       await signInWithEmailAndPassword(auth, email, password);
+      await iniciarSincronizacion();
       navigate("/historia");
     } catch (error) {
       let errorMessage = "Ocurrió un error durante el inicio de sesión.";
