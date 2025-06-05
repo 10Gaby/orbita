@@ -9,13 +9,14 @@ import {
 import video from "../../assets/Aterrizaje Propietas.mp4";
 import PopUp from "../../componentes/PopUp";
 import Header from "../../componentes/Header";
+import { Link, useNavigate } from "react-router-dom";
+import Boton1 from '../../componentes/Boton1';
 
 import PreguntasContractus from "../../componentes/PreguntasContractus";
 
 function PlanetaPropietas() {
     const [carga, setCarga] = useState(true);
 
-    const planeta = useRef(null);
    // Efecto para cambiar el estado después de 2.5 segundos
    useEffect(() => {
     const timer = setTimeout(() => {
@@ -27,9 +28,7 @@ function PlanetaPropietas() {
 
   const [popups, setPopups] = useState({
     popup1: false,
-    popup2: false,
     popup3: false,
-    popup4: false,
   });
 
   const togglePopup = (popupName) => {
@@ -37,11 +36,35 @@ function PlanetaPropietas() {
   };
 
 
+    const planeta = useRef(null);
+    const sección1 = useRef(null);
+    const [isFixedPinguino, setIsFixedPinguino] = useState(false);
+
   // Efecto animar con el scroll
   const { scrollYProgress: scrollYProgressPlaneta } = useScroll({ target: planeta });
+    const { scrollYProgress: scrollYProgressSeccion } = useScroll({ target: sección1 });
+
+    const opacidadPenguin1 = useTransform(scrollYProgressSeccion, [0, 0.2, 0.3, 0.4], ['0', '1', '1', '0']);
+    const opacidadPenguin2 = useTransform(scrollYProgressSeccion, [0.3, 0.4], ['0', '1']);
+    const opacidadOpciones = useTransform(scrollYProgressSeccion, [0.5, 0.6], ['0', '1']);
+
+    useMotionValueEvent(scrollYProgressSeccion, 'change', (last) => {
+      console.log('Scroll', last);
+
+      if (last >= 0.5 && last <= 0.55) {
+        // Aquí puedes agregar la lógica que desees cuando el scroll esté en ese rango
+        console.log('Scroll en rango 0.5 a 0.55');
+      }
+
+      if (last > 0 && last < 1) {
+                setIsFixedPinguino(true);
+        } else {
+            setIsFixedPinguino(false);
+        }
+    });
 
   return (
-    <main>
+    <main className='planeta-propietas'>
         <section className={carga ? 'fixed' : 'hidden'}>
             <video autoPlay loop muted style={{ width: '100vw', height: '100dvh', objectFit: 'cover' }}>
                 <source src={video} type="video/mp4" />
@@ -70,93 +93,88 @@ function PlanetaPropietas() {
                     </div>
                 </div>
 
-                <div className="tipos-contrato">
-                    <h3 className="text-center color-gradient">Tipos de contrato</h3>
-                    <br/><br/>
 
-                    <div className="grid-4" style={{gap:"5%"}}>
-                    <button onClick={() => togglePopup('popup1')} className="btn-contrato" style={{"--rotate": "-6deg", "--translateY": "20px"}}>
-                            <img src="/Ilustraciones/Contrato-fijo.webp"/>
-                            <h4 className="desc">Contrato a término fijo</h4>
-                        </button>
+            </section>
 
-                        <button onClick={() => togglePopup('popup2')} className="btn-contrato">
-                            <img src="/Ilustraciones/Contrato-indefinido.webp"/>
-                            <h4 className="desc">Contrato a término indefinido</h4>
-                        </button>
+            <motion.div ref={sección1} className="seccion1 relative">
+                <motion.img src="/Ilustraciones/Pinguino Propietas.svg" alt="" 
+                className='ilustracion'
+                style={{
+                    opacity: opacidadPenguin1,
+                    position: isFixedPinguino ? 'fixed' : 'absolute',
+                }}
+                />
+                <motion.img src="/Ilustraciones/Pinguino Propietas 2.svg" alt="" 
+                className='ilustracion'
+                style={{
+                    opacity: opacidadPenguin2,
+                    position: isFixedPinguino ? 'fixed' : 'absolute',
+                }}
+                />
 
-                        <button onClick={() => togglePopup('popup3')} className="btn-contrato">
-                            <img src="/Ilustraciones/Contrato-ocasional.webp"/>
-                            <h4 className="desc">Contrato ocasional, accidental o transitorio</h4>
-                        </button>
-
-                        <button onClick={() => togglePopup('popup4')} className="btn-contrato" style={{"--rotate": "6deg", "--translateY": "20px"}}>
-                            <img src="/Ilustraciones/Contrato-obra-labor.webp"/>
-                            <h4 className="desc">Contrato de obra o labor</h4>
-                        </button>
-                    </div>
-
+                <motion.div className='opciones'
+                style={{
+                    opacity: opacidadOpciones,
+                    position: isFixedPinguino ? 'fixed' : 'absolute',
+                }}
+                >
+                    {/* Botón 1 */}
+                    <motion.button className="btn b1" onClick={() => togglePopup('popup1')}>
+                        <img src="/Iconos/Propiedad Industrial.svg" alt="" />
+                    </motion.button>
 
                     <PopUp
                         isOpen={popups.popup1}
                         onClose={() => togglePopup('popup1')}
-                        title="Contrato a término fijo"
-                        image={"/Ilustraciones/Contrato-fijo.webp"}
+                        title="Propiedad Industrial"
+                        image={"/Ilustraciones/Propiedad Industrial.webp"}
                     >
-                        <p>Es un acuerdo que tiene una <b>fecha de finalización ya establecida</b> desde el inicio.<br/></p>
+                        <p>La propiedad industrial protege:</p>
                         <ul>
-                            <li>Debe hacerse por escrito.</li>
-                            <li>Puede durar hasta 3 años, pero se puede renovar las veces que sea necesario.</li>
-                            <li>Puede renovarse automáticamente si se cumplen ciertas condiciones legales.</li>
+                            <li>Patentes (invenciones, como una nueva máquina)</li>
+                            <li>Marcas: logos y nombres comerciales.</li>
+                            <li>Diseños industriales (aspecto visual de un producto)</li>
+                            <li>Secretos industriales (recetas, fórmulas, etc.)</li>
                         </ul>
+                        <p>En Colombia, la Superintendencia de Industria y Comercio (SIC) es la entidad que registra y administra estos derechos.</p>
+                        <br/><b>Si diseñas un logo o una imagen de marca para un cliente, ese logo puede registrarse como marca para evitar copias o plagio.</b>
                     </PopUp>
 
-                    <PopUp
-                        isOpen={popups.popup2}
-                        onClose={() => togglePopup('popup2')}
-                        title="Contrato a término indefinido"
-                        image={"/Ilustraciones/Contrato-indefinido.webp"}
-                    >
-                        <p>Este acuerdo no tiene una fecha de finalización establecida.</p>
-                            <ul>
-                                <li>No se renueva, porque dura hasta que <b>una de las partes decida terminarlo.</b></li>
-                                <li>Puede continuar por <b>tiempo indefinido,</b> siempre que ambas partes estén de acuerdo.</li>
-                            </ul>
-                    </PopUp>
+
+                    {/* Botón 2 */}
+
+                    <motion.button className="btn b2">
+                        <img src="/Iconos/Derechos De Autor.svg" alt="" />
+                    </motion.button>
+
+
+                    {/* Botón 3 */}
+                    
+                    <motion.button className="btn b3" onClick={() => togglePopup('popup3')}>
+                        <img src="/Iconos/Registro de obras.svg" alt="" />
+                    </motion.button>
 
                     <PopUp
                         isOpen={popups.popup3}
                         onClose={() => togglePopup('popup3')}
-                        title="Contrato ocasional, accidental o transitorio"
-                        image={"/Ilustraciones/Contrato-ocasional.webp"}
+                        title="Registro de obras"
+                        image={"/Ilustraciones/Registro Obras.webp"}
                     >
-                        <p>Este es un contrato a <b>término fijo,</b> pero se usa para cubrir una <b>necesidad temporal o puntual</b> en la empresa.
-                            Por ejemplo:</p>
-                            <ul>
-                                <li>Reemplazar a alguien por un período de tiempo.</li>
-                                <li>Apoyar tareas específicas.</li>
-                            </ul>
-                            <p>Es ideal para trabajos <b>transitorios o accidentales,</b> que tienen una duración limitada.</p>
+                        <p>Puedes registrar cualquier obra original como:</p>
+                        <ul>
+                            <li>Obras literarias.</li>
+                            <li>Obras artísticas.</li>
+                            <li>Obras musicales.</li>
+                            <li>Obras audiovisuales.</li>
+                            <li>Software.</li>
+                            <li>Actos y contratos.</li>
+                            <li>Fonogramas.</li>
+                        </ul>
+                        <p>Puedes hacer el registro en línea a tráves del siguiente link: https://registroenlinea.gov.co/portal.aspx</p>
+                        <Boton1 href="https://registroenlinea.gov.co/portal.aspx" target="_blank">Registrar Obra</Boton1>
                     </PopUp>
-
-                    <PopUp
-                        isOpen={popups.popup4}
-                        onClose={() => togglePopup('popup4')}
-                        title="Contrato de obra o labor"
-                        image={"/Ilustraciones/Contrato-obra-labor.webp"}
-                    >
-                        <p>Este contrato <b>dura hasta que se termine una tarea específica.</b></p>
-                            <ul>
-                                <li>No tiene una fecha exacta de finalización, porque depende del tiempo que tome completar la obra o labor contratada.</li>
-                                <li>Por ejemplo, puede ser hasta que se termine una construcción o un proyecto puntual.</li>
-                            </ul>
-                    </PopUp>
-                </div>
-
-            </section>
-
-            <motion.div>
-
+                    
+                </motion.div>
             </motion.div>
 
             <PreguntasContractus />

@@ -26,6 +26,18 @@
 .inicio{
   width: 100vw;
   height: 100%;
+  & .ilus1{
+    top: 35%;
+    left: 10%;
+    animation: animacionRotarIzquierda 5s linear infinite;
+  }
+
+  & .ilus2{
+    top: 40%;
+    right: 5%;
+    animation: animacionRotarDerecha 5s linear infinite;
+  }
+
 }
 
 .contenido-inicio{
@@ -58,7 +70,6 @@
     transform: translateY(0);
   }
 }
-
 
 /*CARGA*/
 
@@ -339,3 +350,131 @@
 
 /*==================PLANETA PROPIETAS==================*/
 
+.planeta-propietas .seccion1{
+    width: 100%;
+    height: 250vh;
+    position: relative;
+
+    & img{
+      width: 100%;
+    }
+
+    & img.ilustracion{
+      position: absolute;
+      left: 0px;
+      bottom: -5px;
+    }
+
+    & .opciones{
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: absolute;
+      top: 0;
+      left: 0;
+      gap: 10%;
+      margin-top: 3%;
+    }
+
+    & .btn{
+      background-color: transparent;
+      width: 15%;
+      height: auto;
+      transition: 0.3s ease;
+    }
+
+    .b1, .b3{
+      transform: translateY(50%);
+      &:hover{
+        transform: translateY(40%) scale(1.05);
+      }
+    }
+
+    .b2:hover{
+      transform: translateY(-10%) scale(1.05);
+    }
+
+}
+
+@keyframes floatFade {
+  0% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -120%) scale(1.2);
+  }
+}
+
+
+/*==============================ESTILOS RESPONSIVE==============================*/
+
+@media screen and (max-width: 900px) {
+
+.inicio{
+  width: 100vw;
+  height: 100dvh;
+  display: grid;
+  justify-items: center;
+  align-items: center;
+    & img.ilus1{
+    display: none;
+  }
+
+  & img.ilus2{
+    display: none;
+  }
+}
+
+.contenido-inicio{
+  & > div{
+    grid-template-columns: 1fr;
+  }
+}
+
+/*CINEMÁTICAS*/
+
+.historia{
+
+  & > div.cinematicas, .slide{
+    display: grid;
+    align-items: center;
+  }
+
+  & img{
+    width: 100%;
+    height: 40%;
+  }
+
+  & .universo{
+    padding: 0 40px;
+  }
+}
+
+
+/*PLANETAS*/
+
+.planetas{
+  display: grid;
+  align-items: center;
+  text-align: center;
+  position: relative;
+
+  & img.pinguino{
+    display: none;
+  }
+}
+
+.planeta{
+  grid-template-columns: 1fr;
+  margin-bottom: 50px;
+  & img{
+    width: 80%;
+  }
+}
+
+
+  
+}

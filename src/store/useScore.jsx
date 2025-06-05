@@ -9,6 +9,7 @@ const useScore = create(
         Contractus: 0,
         Explotarius: 0,
         Propietas: 0,
+        Estrellas: 0,
       },
       sumar: (tipo, puntos = 1) =>
         set((state) => {
@@ -36,6 +37,7 @@ const useScore = create(
           Contractus: 0,
           Explotarius: 0,
           Propietas: 0,
+          Estrellas: 0,
         };
         if (!persistedState?.puntaje || typeof persistedState.puntaje !== 'object') {
           return { ...persistedState, puntaje: defaultPuntaje };

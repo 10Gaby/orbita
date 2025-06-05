@@ -1,14 +1,16 @@
-import { useCallback } from "react";
+import { useCallback, useState, useRef, useEffect } from "react";
 import Particles from "react-particles";
 //import { loadFull } from "tsparticles"; // if you are going to use `loadFull`, install the "tsparticles" package too.
 import { tsParticles } from "tsparticles-engine"; // if you are going to use `loadSlim`, install the "tsparticles-engine" package too.
 import { loadSlim } from "tsparticles-slim"; // if you are going to use `loadSlim`, install the "tsparticles-slim" package too.
+import useScore from "../store/useScore";
+import { button } from "motion/react-client";
 
 const ParticlesBackground = () => {
     const particlesInit = useCallback(async (engine) => {
       await loadSlim(engine);
     }, []);
-  
+    
     return (
       <Particles
         className="particles"

@@ -4,6 +4,7 @@ import '../css/InfiniteMenu.css';
 import { useNavigate } from 'react-router-dom';
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import { auth } from '../api/firebase';
+import useScore from '../store/useScore';
 
 const discVertShaderSource = `#version 300 es
 
@@ -914,10 +915,14 @@ export default function InfiniteMenu({ items = [] }) {
 
 
   const navigate = useNavigate();
+  const score = useScore();
 
   const handleLogout = async () => {
       try {
         await signOut(auth);
+        score.reset('Contractus');
+        score.reset('Explotarius');
+        score.reset('Propietas');
       } catch (error) {
         console.error('Error al cerrar sesión:', error);
       }

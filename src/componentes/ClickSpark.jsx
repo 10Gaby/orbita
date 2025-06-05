@@ -1,4 +1,5 @@
-import { useRef, useEffect, useCallback } from "react";
+import { useRef, useEffect, useCallback, useState } from "react";
+import useScore from "../store/useScore";
 
 const ClickSpark = ({
   sparkColor = "#fff",
@@ -121,6 +122,18 @@ const ClickSpark = ({
     extraScale,
   ]);
 
+
+  const [puedeGanar, setPuedeGanar] = useState(true);
+  const timeoutRef = useRef(null);
+  const score = useScore();
+  const [floatingTexts, setFloatingTexts] = useState([]);
+
+
+  // Limpiar timeout si el componente se desmonta
+  useCallback(() => {
+    return () => clearTimeout(timeoutRef.current);
+  }, []);
+
   const handleClick = (e) => {
     const canvas = canvasRef.current;
     if (!canvas) return;
@@ -135,6 +148,33 @@ const ClickSpark = ({
       angle: (2 * Math.PI * i) / sparkCount,
       startTime: now,
     }));
+
+    if (!puedeGanar) return;
+
+    const puntosGanados = Math.floor(Math.random() * 3) + 1; // 1 a 3
+    score.sumar("Estrellas", puntosGanados);
+
+    const nuevoTexto = {
+      id: Date.now(),
+      x,
+      y,
+      puntos: `+${puntosGanados} ⭐`
+    };
+
+    setFloatingTexts((prev) => [...prev, nuevoTexto]);
+
+    setTimeout(() => {
+      setFloatingTexts((prev) => prev.filter((t) => t.id !== nuevoTexto.id));
+    }, 1000); // Duración visible del texto (en ms)
+
+
+    setPuedeGanar(false);
+    // console.log(`Puntos ganados: ${puntosGanados}`);
+
+    // Permitir nuevamente después de 1 minuto (60000 ms)
+    timeoutRef.current = setTimeout(() => {
+      setPuedeGanar(true);
+    }, 20000);
 
     sparksRef.current.push(...newSparks);
   };
@@ -161,6 +201,26 @@ const ClickSpark = ({
           pointerEvents: "none"
         }}
       />
+      {floatingTexts.map((text) => (
+      <div
+        key={text.id}
+        style={{
+          position: 'absolute',
+          left: text.x,
+          top: text.y,
+          transform: 'translate(-50%, -50%)',
+          color: 'gold',
+          fontSize: '24px',
+          fontWeight: 'bold',
+          pointerEvents: 'none',
+          animation: 'floatFade 1s ease-out forwards',
+          zIndex: 10
+        }}
+      >
+        {text.puntos}
+      </div>
+    ))}
+
       {children}
     </div>
   );

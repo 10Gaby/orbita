@@ -17,7 +17,11 @@ import PlanetaContractus from './pages/planetas/PlanetaContractus';
 import PlanetaExplotarius from './pages/planetas/PlanetaExplotarius';
 import PlanetaPropietas from './pages/planetas/PlanetaPropietas';
 
+import useScoreSync from './store/useScoreSync';
+
 function App() {
+
+  useScoreSync();
 
   return (
       <div className="App">
@@ -46,6 +50,7 @@ function App() {
                   <Route path="/planeta-contractus" element={<PlanetaContractus />} />
                   <Route path="/planeta-explotarius" element={<PlanetaExplotarius />} />
                   <Route path="/planeta-propietas" element={<PlanetaPropietas />} />
+
                 </Routes>
             </Router>
         </div>

@@ -4,6 +4,9 @@ import { signInWithEmailAndPassword, onAuthStateChanged} from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import Boton2 from "../componentes/Boton2";
 import '../css/login.css';
+import { iniciarSincronizacion } from "../store/useScoreSync";
+
+import Header from "../componentes/Header";
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -11,6 +14,8 @@ function Login() {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+
+  
 
   useEffect(() => {
       const unsubscribe = onAuthStateChanged(auth, (user) => {
@@ -30,7 +35,7 @@ function Login() {
     
     try {
       await signInWithEmailAndPassword(auth, email, password);
-      await iniciarSincronizacion();
+      iniciarSincronizacion();
       navigate("/historia");
     } catch (error) {
       let errorMessage = "Ocurrió un error durante el inicio de sesión.";
@@ -59,6 +64,8 @@ function Login() {
 
   return (
     <section className="registro relative">
+
+      <Header enlace="/" />
 
       {error && <p className="error-message">{error}</p>}
       <form onSubmit={handleSubmit}>

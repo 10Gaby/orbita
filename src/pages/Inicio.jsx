@@ -24,8 +24,8 @@ function Inicio() {
     <div className="brillo1 absolute" style={{bottom:"30%", left:"50%", backgroundColor:"rgba(31, 139, 247, 0.25"}}></div>
 
       <section className={`inicio ${carga ? 'hidden' : 'relative'}`}>
-      <img src="/Ilustraciones/Planeta-1.svg" alt="" className="absolute" style={{top:"35%", left:"10%", animation:"animacionRotarIzquierda 5s linear infinite"}}/>
-      <img src="/Ilustraciones/Planeta-2.svg" alt="" className="absolute" style={{top:"50%", right:"5%", animation:"animacionRotarDerecha 5s linear infinite"}}/>
+      <img src="/Ilustraciones/Planeta-1.svg" alt="" className="absolute ilus1"/>
+      <img src="/Ilustraciones/Planeta-2.svg" alt="" className="absolute ilus2"/>
 
         <div className="contenido-inicio relative">
 

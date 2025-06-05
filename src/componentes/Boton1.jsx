@@ -1,9 +1,9 @@
 import React from 'react';
 import '../css/boton.css'; // Asegúrate de que la ruta sea correcta
 
-const Boton1 = ({ href, children, className = '', ...props }) => {
+const Boton1 = ({ href, target, children, className = '', ...props }) => {
     return (
-      <a href={href} className={`styled-link ${className}`} {...props}>
+      <a href={href} className={`styled-link ${className}`} {...props} target={target || '_self'}>
         {children || 'Clic Aquí'} {/* Valor por defecto si no hay children */}
         
         {/* Elementos decorativos */}

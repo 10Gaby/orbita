@@ -3,6 +3,9 @@ import { auth, db } from '../api/firebase';
 import { createUserWithEmailAndPassword, updateProfile, onAuthStateChanged } from "firebase/auth";
 import { doc, setDoc, serverTimestamp, collection } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
+import { iniciarSincronizacion } from "../store/useScoreSync";
+import Header from "../componentes/Header";
+
 import Boton2 from "../componentes/Boton2";
 
 function Registro() {
@@ -49,13 +52,14 @@ function Registro() {
         puntaje: {
           Contractus: 0,
           Explotarius: 0,
-          Propietas: 0
+          Propietas: 0,
+          Estrellas: 0,
         }
       });
       
       // Redirigir después del registro exitoso
       navigate("/historia");
-      await iniciarSincronizacion();
+      iniciarSincronizacion();
     } catch (error) {
       // Manejo de errores
       let errorMessage = "Ocurrió un error durante el registro.";
@@ -81,6 +85,7 @@ function Registro() {
 
   return (
     <section className="registro">
+      <Header enlace="/" />
       <a href="/"><img src="/Iconos/Flecha_De_Color-7.webp" alt="" className="absolute flecha" style={{transform:"scale(-1)", top:"0px", left:"10px"}}/></a>
       <img src="/Registro.png" alt="" />
       

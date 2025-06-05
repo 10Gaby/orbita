@@ -14,7 +14,7 @@ function Planetas() {
     const left = useTransform(scrollYProgressPlanetas, [0, 0.17, 0.4, 0.6, 0.9], ['22%', '22%', '65%', '65%', '22%']);
 
     useMotionValueEvent(scrollYProgressPlanetas, 'change', (last) => {
-      console.log('Scroll', last);
+      // console.log('Scroll', last);
       if (last >= 0.1 && last <= 0.15) {
         // Aquí puedes agregar la lógica que desees cuando el scroll esté en ese rango
         console.log('Scroll en rango 0.1 a 0.15');

@@ -62,7 +62,7 @@ function Historia() {
 
   return (
     <section className="contenedor-general historia">
-      <Header enlace="/planetas" style={{backgroundColor: "#f5f5f5", marginTop:"0px", background:"linear-gradient(180deg, rgba(0, 0, 0, 0.70) 0%, rgba(0, 0, 0, 0.00) 100%)"}}/>
+      <Header enlace="/" style={{backgroundColor: "#f5f5f5", marginTop:"0px", background:"linear-gradient(180deg, rgba(0, 0, 0, 0.70) 0%, rgba(0, 0, 0, 0.00) 100%)"}}/>
       <div className="flechas">
         {isFirstSlide ? (
             <button onClick={prevSlide} className="flecha hidden">

@@ -40,12 +40,25 @@ function Menu() {
 
         if (currentUser) {
         items.push({
-            image: '/Ilustraciones/Logout.png',
+            image: '/Iconos/Logout.png',
             link: '/logout',
             title: 'Cerrar Sesión',
             description: '¡Te esperamos pronto de vuelta!',
-        });
-    }
+        });} else{
+            items.push({
+            image: '/Iconos/Iniciar Sesión.png',
+            link: '/login',
+            title: 'Iniciar Sesión',
+            description: 'Inicia sesión para cargar tu progreso',
+            });
+            items.push({
+            image: '/Iconos/Registrarse.png',
+            link: '/registro',
+            title: 'Regístrate',
+            description: 'Y guarda tu progreso',
+            });
+        }
+
     return (
     <div style={{ height: '100dvh', position: 'relative'}}>
     <Header enlace="/planetas" textoEnlace="Ver Planetas"/>
