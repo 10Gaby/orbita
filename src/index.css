@@ -117,6 +117,14 @@ ul{
   grid-template-columns: repeat(4, 1fr);
 }
 
+.gap-5{
+  gap: 5%;
+}
+
+.m-b-10{
+  margin-bottom: 100px;
+}
+
 button{
   cursor: pointer;
   border: none;
@@ -174,61 +182,6 @@ p{
     border-radius: 30px;
   }
 
-/*==================HEADER==================*/
-
-header{
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  display: flex;
-  margin-top: 10px;
-  justify-content: space-between;
-  z-index: 999;
-
-  & h4{
-    background: white !important;
-    background-clip: text !important;
-    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  }
-
-  & > div:nth-child(1){
-    & a{
-      background: linear-gradient(228deg, #1F8BF7 8.86%, #DC33FC 97.56%), #D9D9D9;
-      padding: 5px 15px;
-      font-family: var(--fuente-títulos);
-      color: white;
-      font-weight: light;
-      text-decoration: none;
-      font-size: 1.5rem;
-      border-radius: 8px;
-
-      display: flex;
-      gap: 1rem;
-    }
-  }
-
-  & > div:nth-child(2){
-    display: flex;
-    align-items: center;
-    gap: 2rem;
-  }
-
-  & .pt{
-    background: linear-gradient(228deg, #1F8BF7 8.86%, #DC33FC 97.56%), #D9D9D9;
-    width: 50px;
-    height: 50px;
-    display: grid;
-    justify-content: center;
-    align-items: center;
-    border-radius: 10px;
-    font-family: var(--fuente-títulos);
-    color: white;
-    font-weight: light;
-    font-size: 1.5rem;
-  }
-}
-
 .btn1{
   background-color: white;
 }
@@ -264,53 +217,6 @@ p{
   font-weight: normal;
 }
 
-
-  header{
-    display: flex;
-  align-items: center;
-  align-content: center;
-  gap: 10px;
-
-  & h4{
-    font-family: var(--fuente-texto);
-    font-size: 1.1rem;
-  }
-
-  & > div:nth-child(1){
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    align-self: center;
-    height: 100%;
-    & a{
-      font-family: var(--fuente-texto);
-      padding: 5px 10px;
-      color: white;
-      font-weight: light;
-      text-decoration: none;
-      font-size: 1.1rem;
-      border-radius: 8px;
-
-      display: flex;
-      gap: 2px;
-    }
-  }
-
-  & > div:nth-child(2){
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-  }
-
-  & .pt{
-    background: linear-gradient(228deg, #1F8BF7 8.86%, #DC33FC 97.56%), #D9D9D9;
-    width: fit-content;
-    height: fit-content;
-    padding: 5px 15px;
-
-    font-size: 1.3rem;
-  }
-}
 }
 
 /* :root {

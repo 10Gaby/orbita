@@ -12,10 +12,11 @@ import Header from "../../componentes/Header";
 import { Link, useNavigate } from "react-router-dom";
 import Boton1 from '../../componentes/Boton1';
 
-import PreguntasContractus from "../../componentes/PreguntasContractus";
+import PreguntasPropietas from "../../componentes/PreguntasPropietas";
 
 function PlanetaPropietas() {
     const [carga, setCarga] = useState(true);
+    const navigate = useNavigate();
 
    // Efecto para cambiar el estado después de 2.5 segundos
    useEffect(() => {
@@ -143,7 +144,7 @@ function PlanetaPropietas() {
 
                     {/* Botón 2 */}
 
-                    <motion.button className="btn b2">
+                    <motion.button className="btn b2" onClick={() => navigate('/derechos-autor')}>
                         <img src="/Iconos/Derechos De Autor.svg" alt="" />
                     </motion.button>
 
@@ -177,7 +178,7 @@ function PlanetaPropietas() {
                 </motion.div>
             </motion.div>
 
-            <PreguntasContractus />
+            <PreguntasPropietas />
 
         </motion.section>
     </main>

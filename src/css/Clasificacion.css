@@ -1,0 +1,69 @@
+/* Contenedor general */
+.tabla-clasificacion {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 4rem 1rem;
+  min-height: 100vh;
+  font-family: 'Poppins', sans-serif;
+  color: #fff;
+}
+
+/* Título */
+.tabla-clasificacion h2 {
+  margin-bottom: 2rem;
+  background: linear-gradient(to right, #d159ff, #4bc3ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Tabla */
+.tabla-clasificacion table {
+  width: 90%;
+  max-width: 700px;
+  border-collapse: collapse;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(8px);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 0 25px rgba(144, 0, 255, 0.15);
+}
+
+/* Encabezados */
+.tabla-clasificacion th {
+  padding: 1rem;
+  background: rgba(160, 41, 255, 0.2);
+  font-weight: bold;
+  text-align: center;
+  color: #ffffffdd;
+  font-size: 1.1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Filas */
+.tabla-clasificacion td {
+  padding: 1rem;
+  text-align: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  font-size: 1rem;
+  color: #eee;
+}
+
+/* Zebra alterna para filas */
+.tabla-clasificacion tbody tr:nth-child(even) {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+/* Efecto hover */
+.tabla-clasificacion tbody tr:hover {
+  background: rgba(144, 0, 255, 0.1);
+  cursor: pointer;
+}
+
+/* Mensaje cuando no hay datos */
+.tabla-clasificacion p {
+  margin-top: 2rem;
+  font-style: italic;
+  color: #ccc;
+  text-align: center;
+}

@@ -35,8 +35,11 @@ function Login() {
     
     try {
       await signInWithEmailAndPassword(auth, email, password);
-      iniciarSincronizacion();
-      navigate("/historia");
+
+      // ✅ Esperar la carga desde Firestore antes de navegar y sincronizar
+      iniciarSincronizacion(() => {
+        navigate("/historia");
+      });
     } catch (error) {
       let errorMessage = "Ocurrió un error durante el inicio de sesión.";
       

@@ -17,7 +17,11 @@ import PlanetaContractus from './pages/planetas/PlanetaContractus';
 import PlanetaExplotarius from './pages/planetas/PlanetaExplotarius';
 import PlanetaPropietas from './pages/planetas/PlanetaPropietas';
 
+import DerechosAutor from './pages/planetas/DerechosAutor';
+
 import useScoreSync from './store/useScoreSync';
+
+import Clasificacion from './pages/Clasificacion';
 
 function App() {
 
@@ -50,6 +54,9 @@ function App() {
                   <Route path="/planeta-contractus" element={<PlanetaContractus />} />
                   <Route path="/planeta-explotarius" element={<PlanetaExplotarius />} />
                   <Route path="/planeta-propietas" element={<PlanetaPropietas />} />
+                  <Route path="/derechos-autor" element={<DerechosAutor />} />
+
+                  <Route path="/clasificacion" element={<Clasificacion />} />
 
                 </Routes>
             </Router>

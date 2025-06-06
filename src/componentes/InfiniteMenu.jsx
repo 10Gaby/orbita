@@ -923,6 +923,7 @@ export default function InfiniteMenu({ items = [] }) {
         score.reset('Contractus');
         score.reset('Explotarius');
         score.reset('Propietas');
+        score.reset('Estrellas');
       } catch (error) {
         console.error('Error al cerrar sesión:', error);
       }

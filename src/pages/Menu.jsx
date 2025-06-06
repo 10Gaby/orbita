@@ -35,6 +35,12 @@ function Menu() {
                     link: '/',
                     title: 'Inicio',
                     description: 'Donde todo comenzó',
+                },
+                {
+                    image: '/Iconos/Clasificación.svg',
+                    link: '/clasificacion',
+                    title: 'Clasificación',
+                    description: 'Compite con otros jugadores',
                 }
         ];
 

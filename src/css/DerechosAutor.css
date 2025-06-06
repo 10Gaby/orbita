@@ -1,0 +1,5 @@
+.derechos-autor .portada{
+    & h2{
+        margin-top: 100px;
+    }
+}

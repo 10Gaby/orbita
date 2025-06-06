@@ -57,7 +57,7 @@ function useScoreSync() {
 export default useScoreSync;
 
 
-export function iniciarSincronizacion() {
+export function iniciarSincronizacion(onComplete) {
   onAuthStateChanged(auth, async (user) => {
     if (user) {
       const docRef = doc(db, "usuarios", user.uid);
@@ -69,12 +69,15 @@ export function iniciarSincronizacion() {
           Contractus: 0,
           Explotarius: 0,
           Propietas: 0,
-          Extrellas: 0,
+          Estrellas: 0,
         };
 
         useScore.setState({ puntaje: puntajeRemoto });
-        useScoreSync.saltarUnaSync(); // 👈 Evita que se sobrescriba
+        useScoreSync.saltarUnaSync(); // evita sobrescribir
       }
+
+      // ✅ Llama al callback cuando termine todo
+      if (onComplete) onComplete();
     }
   });
 }
